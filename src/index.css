@@ -1,0 +1,45 @@
+/* Reset */
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0b0b0b}
+
+/* Theme tokens */
+:root{
+  --bg-dark:#0b0b0b;
+  --bg-page:#ffffff;
+  --gold:#F5B301;
+  --muted:#6b7280;
+  --shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+/* Header like the video */
+.site-header{background:var(--bg-dark);color:#fff}
+.site-header .wrap{max-width:1200px;margin:0 auto;padding:18px 24px;display:flex;gap:32px;align-items:center}
+.brand{color:var(--gold);font-weight:900;letter-spacing:.04em;font-size:20px}
+.nav a{color:#fff;text-decoration:none;opacity:.85}
+.nav a.active{opacity:1;font-weight:700}
+.nav{display:flex;gap:18px;font-size:14px}
+
+/* Page wrapper (white canvas) */
+.main{background:var(--bg-page);max-width:1200px;margin:0 auto;padding:48px 24px;border-radius:12px}
+
+/* Titles */
+.h1{font-size:44px;font-weight:900;text-align:center;margin:12px 0 28px;color:#111}
+
+/* Grid rows like cards */
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:24px}
+
+/* Card */
+.card{background:#fff;border-radius:14px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;gap:10px}
+.card .icon{width:58px;height:58px;background:var(--gold);border-radius:12px;display:grid;place-items:center;color:#222;box-shadow:inset 0 0 0 6px #1112}
+.card .title{text-transform:uppercase;text-align:center;line-height:1.25;font-weight:800;min-height:40px}
+.card .meta{font-size:12px;color:var(--muted)}
+.btn{border:0;background:#111;color:#fff;padding:9px 16px;border-radius:10px;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+
+/* Dark section like the video’s actors band */
+.section-dark{background:#0b0b0b;border-radius:14px;padding:36px 24px;margin-top:40px}
+.section-dark .h1{color:#fff;margin-top:0}
+.section-dark .card{background:#141414}
+.section-dark .title{color:#fff}
+.section-dark .meta{color:#aaa}

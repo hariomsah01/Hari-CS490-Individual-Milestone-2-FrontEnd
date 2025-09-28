@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../lib/api";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";   // ← Link removed
 
 const MovieIcon = () => (
   <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
@@ -42,7 +42,8 @@ export default function Landing(){
               <div className="icon"><span style={{fontWeight:900}}>👤</span></div>
               <div className="title">{a.actor_name}</div>
               <div className="meta">Movie Count: {a.film_count}</div>
-              <Link className="btn" to={`/films?actor=${encodeURIComponent(a.actor_name)}`}>See More</Link>
+              {/* navigate to /actors/:id instead of query link */}
+              <button className="btn" onClick={()=>nav(`/actors/${a.actor_id}`)}>See More</button>
             </div>
           ))}
           {!actors.length && <div style={{color:"#fff",opacity:.7}}>No actors found.</div>}

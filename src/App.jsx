@@ -7,11 +7,11 @@ export default function App(){
     <div>
       <header className="site-header">
         <div className="wrap">
-          <div className="brand">SAKILA.</div>
+          <div className="brand">Hari’s <em>StudioRoom</em></div>
           <nav className="nav">
             <Link className={is("/")} to="/">Home</Link>
             <Link className={is("/films")} to="/films">Films</Link>
-            <Link className={is("/customers")} to="/customers">Customer</Link>
+            <Link className={is("/customers")} to="/customers">Customers</Link>
           </nav>
         </div>
       </header>

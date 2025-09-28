@@ -26,8 +26,18 @@ export default function Films(){
         <button className={`btn ${mode==="category"?"":""}`} onClick={()=>{setMode("category");setQ("");}}>Genre</button>
       </div>
       <form onSubmit={e=>e.preventDefault()} style={{display:"flex",gap:8,marginBottom:18}}>
-        <input className="card" style={{padding:"10px 12px",width:"320px"}} placeholder={`Search by ${mode}...`} value={q} onChange={e=>setQ(e.target.value)} />
-        <button className="btn" onClick={()=>setPage(1)}>Search</button>
+<input 
+  className="card" 
+  style={{
+    padding:"10px 12px",
+    width:"320px",
+    color:"white",          // 👈 this makes typed letters white
+    backgroundColor:"#111"  // optional: dark background for better contrast
+  }} 
+  placeholder={`Search by ${mode}...`} 
+  value={q} 
+  onChange={e=>setQ(e.target.value)} 
+/>        <button className="btn" onClick={()=>setPage(1)}>Search</button>
       </form>
 
       <div className="row">

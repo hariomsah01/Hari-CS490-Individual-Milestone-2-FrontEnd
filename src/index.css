@@ -47,7 +47,7 @@ body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;backg
 .h1 .accent{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* Grid */
-.row{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px}
+.row{display:grid; grid-template-columns:repeat(5, 1fr); gap:18px}
 
 /* Card */
 .card{

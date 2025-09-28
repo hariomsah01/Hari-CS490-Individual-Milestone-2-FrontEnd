@@ -14,6 +14,10 @@ body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;backg
   --accent-2:#00e0ff;     /* electric cyan */
   --ring:0 0 0 2px rgba(155,92,255,.35), 0 0 24px rgba(0,224,255,.25);
   --glow:0 12px 30px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.02);
+  --name-fg:#9fd3ff;         /* calm blue for names */
+  --name-fg-hover:#e3f0ff;   /* brighter on hover/focus */
+  --name-fg-visited:#b9e1ff; /* subtle visited (no purple) */
+  --underline:rgba(159,211,255,.55);
 }
 
 /* Header */
@@ -83,3 +87,54 @@ body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;backg
 }
 .section-dark .card{background:#101322}
 .section-dark .meta{color:#8f95a3}
+
+/* Customers page: layout + controls */
+.container { max-width: 1100px; margin: 0 auto; padding: 16px 20px; }
+.controls { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px; }
+.control { display:flex; align-items:center; gap:8px; font-size:14px; color:var(--muted); }
+.control select {
+  background:#1d2330; color:#e7ecf3; border:1px solid #2a3242; border-radius:8px; padding:6px 10px;
+}
+
+/* Table shell */
+.table-wrap { border-radius:14px; overflow:auto; box-shadow:var(--glow); background:#0f131a; }
+.table { width:100%; border-collapse:separate; border-spacing:0; font-size:15px; color:var(--text); }
+.th,.td { padding:12px 12px; text-align:left; }
+
+/* Sticky header */
+thead th { position:sticky; top:0; background:#11131a; z-index:1; border-bottom:1px solid rgba(255,255,255,.08); }
+
+/* Zebra + hover */
+tbody tr:nth-child(odd){ background:#10131d; }
+tbody tr:nth-child(even){ background:#131827; }
+tbody tr:hover{ background:#182033; }
+
+/* Soft dividers */
+.td,.th{ border-right:1px solid rgba(255,255,255,.06); }
+.td:last-child,.th:last-child{ border-right:none; }
+tbody tr{ border-top:1px solid rgba(255,255,255,.05); }
+
+/* Utilities */
+.mono{ font-variant-numeric: tabular-nums; }
+.ellipsis{ max-width:520px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+/* Name links (friendlier colors) */
+.name-link{
+  color:var(--name-fg);
+  text-decoration:underline;
+  text-decoration-thickness:.08em;
+  text-underline-offset:2px;
+  text-decoration-color:var(--underline);
+  transition:color .15s ease, text-decoration-color .15s ease;
+}
+.name-link:hover,
+.name-link:focus-visible{
+  color:var(--name-fg-hover);
+  text-decoration-color:currentColor;
+}
+.name-link:visited{ color:var(--name-fg-visited); }
+
+/* Focus outlines for accessibility */
+a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible{
+  outline:2px solid #5a8cff; outline-offset:2px;
+}

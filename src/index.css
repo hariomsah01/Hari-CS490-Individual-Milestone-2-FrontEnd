@@ -138,3 +138,17 @@ tbody tr{ border-top:1px solid rgba(255,255,255,.05); }
 a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible{
   outline:2px solid #5a8cff; outline-offset:2px;
 }
+
+/* in index.css */
+.card input, .card[type="text"], input.card, .card select, .card textarea, input, textarea, select {
+  color: #fff;
+  background: #111;
+  border: 1px solid #444;
+}
+
+/* in src/index.css */
+input, textarea, select {
+  color: #fff;
+  background: #111;
+  border: 1px solid #444;
+}

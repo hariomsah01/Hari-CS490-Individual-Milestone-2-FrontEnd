@@ -9,6 +9,7 @@ import Customers from "./pages/Customers.jsx";
 import CustomerDetail from "./pages/CustomerDetail.jsx";
 import ActorDetail from "./pages/ActorDetail.jsx";   
 import CustomerForm from "./pages/CustomerForm.jsx";
+import CustomerEdit from "./pages/CustomerEdit.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -22,7 +23,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/customers/:id" element={<CustomerDetail />} />
         <Route path="/actors/:id" element={<ActorDetail />} />   
         <Route path="/customers/new" element={<CustomerForm />} />
-        <Route path="/customers/:id/edit" element={<CustomerForm />} />   
+        <Route path="/customers/:id/edit" element={<CustomerForm />} />
       </Route>
     </Routes>
   </BrowserRouter>

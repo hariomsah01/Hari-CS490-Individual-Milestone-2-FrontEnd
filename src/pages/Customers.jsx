@@ -1,10 +1,11 @@
+// src/pages/Customers.jsx
 import { useEffect, useState } from "react";
 import { api } from "../lib/api";
 import { Link, useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import Pager from "../components/Pager";
 
-export default function Customers(){
+export default function Customers() {
   const nav = useNavigate();
   const [q, setQ] = useState("");
   const [page, setPage] = useState(1);
@@ -16,11 +17,13 @@ export default function Customers(){
   const load = () => {
     const params = { q, page, pageSize };
     if (isInt(q)) params.id = q;
-    api.get("/customers", { params }).then(r => setRows(r.data.data || []));
+    api.get("/customers", { params }).then((r) => setRows(r.data.data || []));
   };
 
   useEffect(load, [q, page, pageSize]);
-  useEffect(() => { setPage(1); }, [q, pageSize]);
+  useEffect(() => {
+    setPage(1);
+  }, [q, pageSize]);
 
   const onDelete = async (id) => {
     if (!window.confirm(`Delete customer #${id}? This cannot be undone.`)) return;
@@ -34,11 +37,11 @@ export default function Customers(){
 
   return (
     <section className="container">
-      <div className="controls" style={{ justifyContent:"space-between" }}>
-        <div style={{ display:"flex", gap:12 }}>
+      <div className="controls" style={{ justifyContent: "space-between" }}>
+        <div style={{ display: "flex", gap: 12 }}>
           <SearchBar
             value={q}
-            onChange={(v)=> setQ(v)}
+            onChange={(v) => setQ(v)}
             placeholder="Search by ID or first/last name…"
           />
 
@@ -46,7 +49,7 @@ export default function Customers(){
             <span>Rows/page</span>
             <select
               value={pageSize}
-              onChange={(e)=>setPageSize(parseInt(e.target.value,10))}
+              onChange={(e) => setPageSize(parseInt(e.target.value, 10))}
             >
               <option value={10}>10</option>
               <option value={25}>25</option>
@@ -56,7 +59,9 @@ export default function Customers(){
           </label>
         </div>
 
-        <button className="btn" onClick={()=>nav("/customers/new")}>+ New Customer</button>
+        <button className="btn" onClick={() => nav("/customers/new")}>
+          + New Customer
+        </button>
       </div>
 
       <div className="table-wrap">
@@ -70,7 +75,7 @@ export default function Customers(){
             </tr>
           </thead>
           <tbody>
-            {rows.map(c => (
+            {rows.map((c) => (
               <tr key={c.customer_id} className="tr">
                 <td className="td mono">{c.customer_id}</td>
                 <td className="td">
@@ -78,24 +83,40 @@ export default function Customers(){
                     {c.first_name} {c.last_name}
                   </Link>
                 </td>
-                <td className="td ellipsis" title={c.email}>{c.email}</td>
+                <td className="td ellipsis" title={c.email}>
+                  {c.email}
+                </td>
                 <td className="td">
-                  <div style={{ display:"flex", gap:8 }}>
-                    <button className="btn secondary" onClick={()=>nav(`/customers/${c.customer_id}/edit`)}>Edit</button>
-                    <button className="btn danger" onClick={()=>onDelete(c.customer_id)}>Delete</button>
+                  <div style={{ display: "flex", gap: 8 }}>
+                    <button
+                      className="btn secondary"
+                      onClick={() => nav(`/customers/${c.customer_id}/edit`)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="btn danger"
+                      onClick={() => onDelete(c.customer_id)}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </td>
               </tr>
             ))}
             {!rows.length && (
-              <tr><td className="td" colSpan={4} style={{ opacity:.7 }}>No customers found.</td></tr>
+              <tr>
+                <td className="td" colSpan={4} style={{ opacity: 0.7 }}>
+                  No customers found.
+                </td>
+              </tr>
             )}
           </tbody>
         </table>
       </div>
 
       <div className="pager">
-        <Pager page={page} setPage={setPage} hasNext={rows.length===pageSize}/>
+        <Pager page={page} setPage={setPage} hasNext={rows.length === pageSize} />
       </div>
     </section>
   );
